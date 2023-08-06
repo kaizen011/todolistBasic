@@ -7,11 +7,22 @@ function addTask() {
     const taskText = taskInput.value.trim();
     if (taskText !== "") {
         const newTask = document.createElement("li");
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete task";
+        
         newTask.textContent = taskText;
+        newTask.appendChild(deleteButton);
+
+        
+        deleteButton.addEventListener("click", function() {
+            newTask.remove();
+        });
+
         todoList.appendChild(newTask);
         taskInput.value = "";
     }
 }
+
 
 addButton.addEventListener("click", addTask);
 
